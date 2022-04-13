@@ -8,6 +8,9 @@ int Driver::send(char* c, int cSize) {
         cerr << "Error opening file";
         exit(0);
     }
+    //send message twice for error detection
+    outfile.write(c, cSize);
+    outfile << endl;
     outfile.write(c, cSize);
     outfile << endl;
     outfile.close();
