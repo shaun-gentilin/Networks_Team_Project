@@ -3,11 +3,10 @@
 
 class Transport
 {
-public:
-    
-
 private:
 
+public:
+    Transport(char c);
 
 };
 
