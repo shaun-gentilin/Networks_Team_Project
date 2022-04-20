@@ -10,7 +10,7 @@ int Driver::send(char* c, int cSize) {
     }
     //send message twice for error detection
     outfile.write(c, cSize);
-    outfile << endl;
+    outfile.write(" ", 1); //space separator
     outfile.write(c, cSize);
     outfile << endl;
     outfile.close();
