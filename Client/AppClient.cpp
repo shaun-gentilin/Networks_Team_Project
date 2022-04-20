@@ -58,7 +58,7 @@ int main()
         std::cout << "Send another message? (Y/N): " << std::endl;
         char userInput;
         std::cin >> userInput;
-        if(userInput == 'N')
+        if(userInput == 'N' || userInput == 'n')
         {
             running = false;
         }
