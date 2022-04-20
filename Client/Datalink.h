@@ -3,6 +3,7 @@
 
 #define SENDER_HW_ID 0
 #define LINK_HEAD_SIZE 4
+#define PACKET_SIZE 68
 
 class Datalink {
 private:
@@ -10,7 +11,7 @@ private:
     short recvID;
 public:
     Datalink(); //Constructor
-    int send(char* c, short recvHardwareID, int cSize);
+    int send(char* c, short recvHardwareID);
 };
 
 #endif

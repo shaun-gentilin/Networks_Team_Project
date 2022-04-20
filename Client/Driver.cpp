@@ -1,6 +1,11 @@
 #include "Driver.h"
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
 
-int Driver::send(char* c, int cSize) {
+int Driver::send(char* c) {
     //wrtie bytes to client server share file
     ofstream outfile(PATH, ofstream::app);
     if (!outfile)
@@ -9,9 +14,8 @@ int Driver::send(char* c, int cSize) {
         exit(0);
     }
     //send message twice for error detection
-    outfile.write(c, cSize);
-    outfile.write(" ", 1); //space separator
-    outfile.write(c, cSize);
+    outfile.write(c, PACKET_SIZE);
+    outfile.write(c, PACKET_SIZE);
     outfile << endl;
     outfile.close();
 
