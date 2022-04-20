@@ -4,16 +4,12 @@
 #include <iostream>
 using namespace std;
 
-Datalink::Datalink(short sID, short rID) {
-    senderID = sID;
-    recvID = rID;
-}
+Datalink::Datalink() {}
 
-int Datalink::send(char* c, int recvHardwareID, int cSize) {
-    short sHWID = (short)SENDER_HW_ID;
-    short rHWID = (short)recvHardwareID;
-    Datalink link = new Datalink(sHWID, rHWID);
+int Datalink::send(char* c, short recvHardwareID, int cSize) {
+    senderID = SENDER_HW_ID;
+    recvID = recvHardwareID;
     memcpy(c + cSize, (char*)link, LINK_HEAD_SIZE);
     Driver driver = new Driver();
-    return driver.send(c, cSize + LINK_HEAD_SIZE);    
+    return driver.send(c, cSize + LINK_HEAD_SIZE);
 }
