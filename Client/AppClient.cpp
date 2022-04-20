@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Transport.h"
 
 std::string encode(unsigned char* k, std::string me)
 {
@@ -50,9 +51,16 @@ int main()
         std::string cypherText = encode(key, message);
         std::cout << cypherText << std::endl;
 
-        std::string answer = encode(key, cypherText);
-        std::cout << answer << std::endl;
+        //send cypher text here//
+        Transport t;
+        t.send(0, 1, cypherText);
 
-        running = false;
+        std::cout << "Send another message? (Y/N): " << std::endl;
+        char userInput;
+        std::cin >> userInput;
+        if(userInput == 'N' || userInput == 'n')
+        {
+            running = false;
+        }
     }
 }

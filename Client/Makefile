@@ -1,2 +1,2 @@
-app: AppClient.cpp
-	g++ -o app AppClient.cpp
+app: AppClient.cpp Transport.cpp
+	g++ -o app AppClient.cpp Transport.cpp
