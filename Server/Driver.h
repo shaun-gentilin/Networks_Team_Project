@@ -5,7 +5,6 @@
 
 class Driver {
 public:
-    int recv(char* c, int cSize);
 };
 
 #endif
