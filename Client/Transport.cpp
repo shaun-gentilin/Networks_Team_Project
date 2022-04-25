@@ -18,8 +18,8 @@ int Transport::send(short address, short port, std::string message)
     c[65] = address & 0xffff;
     c[64] = (address & 0xffff) >> 8;
 
-    //Datalink d;
-    //d.send(c, 5);
+    Datalink d;
+    d.send(c, 5);
 }
 
 int Transport::receive()
