@@ -22,7 +22,8 @@ int Transport::send(short address, short port, std::string message)
     d.send(c, 5);
 }
 
-int Transport::receive()
+int Transport::receive(char* m)
 {
+    //Do something to character pointer;
     return 1;
 }

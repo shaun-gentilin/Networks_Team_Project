@@ -9,7 +9,7 @@ private:
 public:
     int send(short address, short port, std::string message);
 
-    int receive();
+    int receive(char* m);
 };
 
 #endif //H_TRANSPORT
