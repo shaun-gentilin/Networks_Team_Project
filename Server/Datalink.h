@@ -13,11 +13,7 @@ private:
     short recvID;
 public:
     Datalink(); //Constructor
-    char* getDataHead();
-    void setSenderID();
-    void setRecvID();
+    char* recv();
 };
-
-char* link_recv();
 
 #endif

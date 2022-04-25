@@ -5,11 +5,9 @@
 #define PATH "../client_to_server.txt"
 #define MES_AND_HEAD_SIZE 72
 
-#include "Datalink.h"
-
 class Driver {
 public:
-    char* recv(Datalink* link);
+    char* recv();
 };
 
 #endif
