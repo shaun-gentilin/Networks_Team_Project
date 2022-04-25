@@ -14,8 +14,8 @@ int Driver::send(char* c) {
         exit(0);
     }
     //send message twice for error detection
-    outfile.write(c, PACKET_SIZE);
-    outfile.write(c, PACKET_SIZE);
+    outfile.write(c, PACKET_SIZE_DRIVER);
+    outfile.write(c, PACKET_SIZE_DRIVER);
     outfile << endl;
     outfile.close();
 
@@ -52,4 +52,5 @@ int Driver::send(char* c) {
       	}
     }
     infile.close();
+    return 1;
 }
