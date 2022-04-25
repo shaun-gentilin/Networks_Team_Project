@@ -6,7 +6,7 @@ using namespace std;
 
 Datalink::Datalink() {}
 
-char* link_recv() {
+char* Datalink::recv() {
     Driver* driver = new Driver();
     char* data = driver->recv();
     memcpy(&senderID, data + MESSAGE_AND_TRANS_LENGTH, sizeof(short));
@@ -18,7 +18,7 @@ char* link_recv() {
         cout << "Receiver ID does not match\n";
     }
     //strip off the link header and send up
-    char* data_link_stripped;
-    memcpy(data_link_stripped, link_data, MESSAGE_AND_TRANS_LENGTH);
+    char* data_link_stripped = (char*)malloc(MESSAGE_AND_TRANS_LENGTH);
+    memcpy(data_link_stripped, data, MESSAGE_AND_TRANS_LENGTH);
     return data_link_stripped;
 }
