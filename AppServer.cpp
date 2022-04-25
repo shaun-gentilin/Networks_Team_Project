@@ -27,10 +27,16 @@ int main()
 
     Transport t;
     char message[64];
+    std::string m_string = "";
 
     if(t.receive(message) == 1)
     {
-        //print message
+        for(int i = 0; i < 64; i++)
+        {
+            m_string.push_back(message[i]);
+        }
+
+        std::string decoded_string = encode(key, m_string);
     }
     else
     {
