@@ -5,7 +5,7 @@
 #include <string.h>
 using namespace std;
 
-char* Driver::recv() {
+char* Driver::recv(Datalink* link) {
     //get new message
     ifstream infile(PATH);
     if (!infile) {
@@ -18,23 +18,21 @@ char* Driver::recv() {
     bool wait=true;
     string mes1;
     string mes2;
-    char* ret;
-    ack = false;
+    bool ack = false;
 
     while (wait) {
         if (getline(infile,st_recv)) {
             //check if the two sent messages match
-            int meslen = (st_recv.length()/2)+1;
-            mes1 = st_recv.c_str().substr(0,meslen);
-            mes2 = st_recv.c_str().substr(meslen,st_recv.length());
-            if (mes1.compare(mes2) != 0) {
-                cerr << "Error in sent message\n";
+            int meslen = st_recv.length()/2;
+            mes1 = st_recv.substr(0,meslen);
+            mes2 = st_recv.substr(meslen,st_recv.length());
+            cout << mes1 << endl << mes2 << endl;
+	    if (mes1.compare(mes2) == 0) {
+	        ack = true;
             }
-            else {
-                ack = true;
-            }
-            memcpy(ret, mes1, st_recv.length()/2);
-            posFile = infile.tellg();
+            memcpy(link->getDataHead(), st_recv.c_str(), meslen);
+            cout << ack;
+	    posFile = infile.tellg();
             wait=false;
         }
         else {
@@ -48,23 +46,8 @@ char* Driver::recv() {
         }
     }
     infile.close();
-
-
-    //write ack or nack to shared file and return the message
-    ofstream outfile(PATH, ofstream::app);
-    if (!outfile)
-    {
-        cerr << "Error opening file";
-        exit(0);
+    if (!ack) {
+        cout << "There was an error in the sent message, you may want to resend..." << endl;
     }
-
-    if (ack) {
-        outfile.write("ACK", 3);
-        outfile << endl;
-    }
-    else {
-        outfile.write("NACK", 4);
-        outfile << endl;
-    }
-    return ret;
+    return link->getDataHead();
 }

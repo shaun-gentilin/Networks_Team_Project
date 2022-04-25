@@ -1,8 +1,8 @@
 CC = g++
 CFLAGS = -g -Wall
 
-client: Driver.o Datalink.o mockTransport.o
-	$(CC) $(CFLAGS) Driver.o Datalink.o mockTransport.o -o client
+client: Driver.o Datalink.o Transport.o AppClient.o
+	$(CC) $(CFLAGS) Driver.o Datalink.o Transport.o AppClient.o -o client
 
 Driver.o: Driver.cpp Driver.h
 	$(CC) $(CFLAGS) -c Driver.cpp
@@ -10,8 +10,11 @@ Driver.o: Driver.cpp Driver.h
 Dataink.o: Datalink.cpp Datalink.h
 	$(CC) $(CFLAGS) -c Datalink.cpp
 
-mockTransport.o: mockTransport.cpp
-	$(CC) $(CFLAGS) -c mockTransport.cpp
+Transport.o: Transport.cpp Transport.h
+	$(CC) $(CFLAGS) -c Transport.cpp
+
+AppClient.o: AppClient.cpp
+	$(CC) $(CFLAGS) -c AppClient.cpp
 
 clean:
 	rm *.o client

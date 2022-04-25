@@ -8,11 +8,16 @@
 
 class Datalink{
 private:
+    char* data;
     short senderID;
     short recvID;
 public:
     Datalink(); //Constructor
-    char* recv();
+    char* getDataHead();
+    void setSenderID();
+    void setRecvID();
 };
+
+char* link_recv();
 
 #endif

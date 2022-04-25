@@ -18,39 +18,5 @@ int Driver::send(char* c) {
     outfile.write(c, PACKET_SIZE_DRIVER);
     outfile << endl;
     outfile.close();
-
-    //check for acknowledgement
-    ifstream infile(PATH);
-    if (!infile) {
-        cerr << "Error opening the file for reading\n";
-	      exit(0);
-    }
-    static streampos posFile;
-    infile.seekg(posFile);
-    string st_recv;
-    bool wait=true;
-
-    while (wait) {
-        if (getline(infile,st_recv)) {
-      	    posFile = infile.tellg();
-      	    wait=false;
-            if (st_recv == "ACK") {
-                return 0;
-            }
-            else {
-                return 1;
-            }
-      	}
-      	else {
-      	    infile.close();
-      	    infile.open(PATH);
-      	    if (!infile) {
-      	        cerr << "Error opening the file for reading\n";
-      		      exit(0);
-      	    }
-      	    infile.seekg(posFile);
-      	}
-    }
-    infile.close();
-    return 1;
+    return 0;
 }

@@ -4,9 +4,10 @@
 using namespace std;
 
 int main() {
-  Datalink link = new Datalink();
-  char* packet = link.recv
+  Datalink* link = new Datalink();
+  char* packet = link_recv();
   char* ret;
   memcpy(ret, packet, 64);
-  return ret;
+  cout << ret << endl;
+  return 0;
 }
