@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -g -Wall
 
 server: Driver.o Datalink.o Transport.o AppServer.o
-	$(CC) $(CFLAGS) Driver.o Datalink.o Transport.o AppClient.o -o server
+	$(CC) $(CFLAGS) Driver.o Datalink.o Transport.o AppServer.o -o server
 
 Driver.o: Driver.cpp Driver.h
 	$(CC) $(CFLAGS) -c Driver.cpp
@@ -17,4 +17,4 @@ AppServer.o: AppServer.cpp
 	$(CC) $(CFLAGS) -c AppServer.cpp
 
 clean:
-	rm *.o client
+	rm *.o

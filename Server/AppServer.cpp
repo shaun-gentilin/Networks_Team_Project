@@ -26,20 +26,15 @@ int main()
                             87,12,14,34,65,142,54,6}; //
 
     Transport t;
-    char message[64];
-    std::string m_string = "";
+    char* m = t.receive();
 
-    if(t.receive(message) == 1)
+    std::string m_encoded = "";
+    for(int i = 0; i < 64; i++)
     {
-        for(int i = 0; i < 64; i++)
-        {
-            m_string.push_back(message[i]);
-        }
+        m_encoded.push_back(m[i]);
+    }
 
-        std::string decoded_string = encode(key, m_string);
-    }
-    else
-    {
-        std::cerr << "Error: failed to receive message";
-    }
+    std::string m_decoded = encode(key, m_encoded);
+
+    std::cout << m_decoded << std::endl;
 }
