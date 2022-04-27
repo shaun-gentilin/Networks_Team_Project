@@ -53,7 +53,7 @@ int main()
 
         //send cypher text here//
         Transport t;
-        t.send(0, 1, cypherText);
+        t.send(27, 18, cypherText);
 
         std::cout << "Send another message? (Y/N): " << std::endl;
         char userInput;

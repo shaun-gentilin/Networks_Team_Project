@@ -10,11 +10,17 @@ char* Transport::receive()
 {
     //Do something to character pointer;
     Datalink d;
-    return d.recv();
-    /*
+    
+    char* m = d.recv();
+    
     std::cout << (int)m[67] << std::endl;
     std::cout << (int)m[66] << std::endl;
-    std::cout << (int)m[65] << std::endl;
-    std::cout << (int)m[64] << std::endl;
-    */
+
+    short port = (m[67] & 0xfff) | ((m[66] & 0xffff) << 8);
+    std::cout << "PORT: " << port << std::endl;
+
+    short address = (m[65] & 0xfff) | ((m[64] & 0xffff) << 8);
+    std::cout << "ADDRESS: " << address << std::endl;
+    
+    return d.recv();
 }
