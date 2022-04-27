@@ -46,5 +46,6 @@ char* Driver::recv() {
   if (!ack) {
       cout << "There was an error in the sent message, you may want to resend..." << endl;
   }
-  return (char*)st_recv.c_str();
+  //cout << (char*)st_recv.c_str() << endl << endl;
+  return (char*)mes1.c_str();
 }

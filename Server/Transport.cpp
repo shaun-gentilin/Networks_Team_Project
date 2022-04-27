@@ -4,6 +4,7 @@
 #include <cstring>
 
 #define DATA_LENGTH 68
+#define MESSAGE_LENGTH 64
 
 char* Transport::receive()
 {

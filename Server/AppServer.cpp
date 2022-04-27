@@ -26,15 +26,17 @@ int main()
                             87,12,14,34,65,142,54,6}; //
 
     Transport t;
-    char* m = t.receive();
+    while(true) {
+        char* m = t.receive();
 
-    std::string m_encoded = "";
-    for(int i = 0; i < 64; i++)
-    {
-        m_encoded.push_back(m[i]);
+        std::string m_encoded = "";
+        for(int i = 0; i < 64; i++)
+        {
+            m_encoded.push_back(m[i]);
+        }
+
+        std::string m_decoded = encode(key, m_encoded);
+
+        std::cout << m_decoded << std::endl;
     }
-
-    std::string m_decoded = encode(key, m_encoded);
-
-    std::cout << m_decoded << std::endl;
 }

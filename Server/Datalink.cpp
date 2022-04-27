@@ -18,7 +18,6 @@ char* Datalink::recv() {
         cout << "Receiver ID does not match\n";
     }
     //strip off the link header and send up
-    char* data_link_stripped = (char*)malloc(MESSAGE_AND_TRANS_LENGTH);
-    memcpy(data_link_stripped, data, MESSAGE_AND_TRANS_LENGTH);
-    return data_link_stripped;
+    data[69] = '\0'; //null terminate it after message and transport header
+    return data;
 }
